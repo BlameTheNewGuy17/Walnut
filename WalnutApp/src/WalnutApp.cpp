@@ -2,6 +2,10 @@
 #include "Walnut/EntryPoint.h"
 
 #include "Walnut/Image.h"
+#include "Walnut/GameCore/GameCore.h"
+
+//Global Game Loop Instance Ref
+GameLoopCore GLInstance;
 
 class ExampleLayer : public Walnut::Layer
 {
@@ -14,10 +18,11 @@ public:
 	virtual void OnUIRender() override
 	{
 		ImGui::Begin("Hello");
-		ImGui::Button("Button");
+		GLInstance.GameLoop();
+		ImGui::Button("TextSample");
 		ImGui::Text("This is some text");
 
-		ImGui::Image(m_Image->GetDescriptorSet(), { (float)m_Image->GetWidth(), (float)m_Image->GetHeight()});
+		//ImGui::Image(m_Image->GetDescriptorSet(), { (float)m_Image->GetWidth(), (float)m_Image->GetHeight()});
 
 		ImGui::End();
 
@@ -31,8 +36,9 @@ private:
 Walnut::Application* Walnut::CreateApplication(int argc, char** argv)
 {
 	Walnut::ApplicationSpecification spec;
-	spec.Name = "Walnut Example";
-
+	spec.Name = "Game Name";
+	//Ok so we know this runs once at startup
+	InitGameLoop(GLInstance);
 	Walnut::Application* app = new Walnut::Application(spec);
 	app->PushLayer<ExampleLayer>();
 	app->SetMenubarCallback([app]()
