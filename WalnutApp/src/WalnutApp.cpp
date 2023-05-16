@@ -5,7 +5,7 @@
 #include "Walnut/GameCore/GameCore.h"
 
 //Global Game Loop Instance Ref
-GameLoopCore GLInstance;
+GLCore GLInstance;
 
 class ExampleLayer : public Walnut::Layer
 {
@@ -20,7 +20,8 @@ public:
 		ImGui::Begin("Hello");
 		GLInstance.GameLoop();
 		ImGui::Button("TextSample");
-		ImGui::Text("This is some text");
+		ImGui::Text(GLInstance.ConvToChar(0));
+		ImGui::Text("0");
 
 		//ImGui::Image(m_Image->GetDescriptorSet(), { (float)m_Image->GetWidth(), (float)m_Image->GetHeight()});
 
