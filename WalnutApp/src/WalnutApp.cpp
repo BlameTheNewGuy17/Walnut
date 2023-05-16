@@ -19,9 +19,7 @@ public:
 	{
 		ImGui::Begin("Hello");
 		GLInstance.GameLoop();
-		ImGui::Button("TextSample");
-		ImGui::Text(GLInstance.ConvToChar(0));
-		ImGui::Text("0");
+		ImGui::Text("%s", GLInstance.GLText.c_str());
 
 		//ImGui::Image(m_Image->GetDescriptorSet(), { (float)m_Image->GetWidth(), (float)m_Image->GetHeight()});
 
