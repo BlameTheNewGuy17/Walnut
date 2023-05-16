@@ -10,26 +10,13 @@ GLCore GLInstance;
 class ExampleLayer : public Walnut::Layer
 {
 public:
-	virtual void OnAttach() override
-	{
-		m_Image = std::make_shared<Walnut::Image>("Dad.png");
-	}
-
 	virtual void OnUIRender() override
 	{
 		ImGui::Begin("Hello");
-		GLInstance.GameLoop();
-		ImGui::Text("%s", GLInstance.GLText.c_str());
-
-		//ImGui::Image(m_Image->GetDescriptorSet(), { (float)m_Image->GetWidth(), (float)m_Image->GetHeight()});
-
+		GLInstance.GameLoop(); // Tick the game loop
+		GLInstance.GameRender();
 		ImGui::End();
-
-		// Uncomment to show ImGui Demo Window
-		//ImGui::ShowDemoWindow();
 	}
-private:
-	std::shared_ptr<Walnut::Image> m_Image;
 };
 
 Walnut::Application* Walnut::CreateApplication(int argc, char** argv)
