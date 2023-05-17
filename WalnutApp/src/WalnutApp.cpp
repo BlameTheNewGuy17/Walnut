@@ -7,15 +7,14 @@
 //Global Game Loop Instance Ref
 GLCore GLInstance;
 
+
 class ExampleLayer : public Walnut::Layer
 {
 public:
 	virtual void OnUIRender() override
-	{
-		ImGui::Begin("Hello");
+	{	
 		GLInstance.GameLoop(); // Tick the game loop
-		GLInstance.GameRender();
-		ImGui::End();
+		GLInstance.GameRender(); // Display the text, handles both text and map
 	}
 };
 
