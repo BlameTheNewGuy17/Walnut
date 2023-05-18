@@ -1,4 +1,6 @@
 #include "GameCore.h"
+
+#include "Walnut/GameCore/StringHandler.h"
 #include "Walnut/Application.h"
 #include <iostream>
 #include <string>
@@ -32,7 +34,7 @@ void GLCore::RenderText()
 void GLCore::RenderMap() 
 {
 	ImGui::Begin("Map");
-	for (int yi = 0; yi <= 23; yi++) 
+	for (int yi = 0; yi <= 23; yi++)
 	{
 		std::string CurrentLine = GLMap[yi];
 		for (int xi = 0; xi <= 59; xi++)
@@ -55,9 +57,9 @@ void GLCore::RenderMap()
 			// Make Color Vector with data from MapColors
 			ImVec4 TempColor = ImVec4
 			(
-				MapColors[(ColorID * 4) + 0], 
-				MapColors[(ColorID * 4) + 1], 
-				MapColors[(ColorID * 4) + 2], 
+				MapColors[(ColorID * 4) + 0],
+				MapColors[(ColorID * 4) + 1],
+				MapColors[(ColorID * 4) + 2],
 				MapColors[(ColorID * 4) + 3]
 			);
 
